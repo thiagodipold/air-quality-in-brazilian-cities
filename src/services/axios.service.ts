@@ -6,12 +6,15 @@ const defaultHeaders = {
 };
 
 const baseUrl = "http://api.waqi.info/feed/";
+const token = "/?token=10c0ff97d9b6ff761a17b39f969bc87459f4ad02";
 
-export async function get<T>(url: string): Promise<T> {
+export async function getApi<T>(url: string): Promise<T> {
   const headers = { ...defaultHeaders };
 
   try {
-    const response = await axios.get<T>(`${baseUrl}${url}`, { headers });
+    const response = await axios.get<T>(`${baseUrl}${url}${token}`, {
+      headers,
+    });
     return response.data;
   } catch (error) {
     if (error) {

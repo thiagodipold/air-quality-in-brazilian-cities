@@ -9,8 +9,11 @@ export const theme = createTheme({
     },
   },
   palette: {
+    primary: {
+      main: "#44c287",
+    },
     info: {
-      main: "#fff",
+      main: "#000",
     },
   },
 });

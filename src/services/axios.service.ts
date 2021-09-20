@@ -5,7 +5,7 @@ const defaultHeaders = {
   "Content-Type": "application/json",
 };
 
-const baseUrl = "http://api.waqi.info/feed/";
+const baseUrl = "https://api.waqi.info/feed/";
 const token = "/?token=10c0ff97d9b6ff761a17b39f969bc87459f4ad02";
 
 export async function getApi<T>(url: string): Promise<T> {

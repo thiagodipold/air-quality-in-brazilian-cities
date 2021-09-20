@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import InformationDialog from "../InformationDialog";
 import { CustomCard } from "./style";
 
 const backgroundColor = {
@@ -22,6 +23,7 @@ interface ICityCard {
 }
 const CityCard: React.FC<ICityCard> = ({ airQuality, city }) => {
   const [nivel, setNivel] = useState("");
+  const [open, setOpen] = useState(false);
 
   const nivelByAirQuality = (): string => {
     switch (!!airQuality) {
@@ -45,32 +47,48 @@ const CityCard: React.FC<ICityCard> = ({ airQuality, city }) => {
   }, []);
 
   return (
-    <CustomCard backgroundColor={backgroundColor[nivel]}>
-      <CardContent>
-        <Typography
-          align="center"
-          component="h3"
-          variant="body2"
-          color="text.secondary"
-          gutterBottom
-        >
-          {city}
-        </Typography>
-        <Typography align="center" variant="h4" component="h4">
-          {airQuality}
-        </Typography>
-        <Typography align="center" color="text.secondary">
-          {nivel}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <Box display="flex" width="100%" justifyContent="end">
-          <Button variant="outlined" color="info" size="small">
-            Saiba mais
-          </Button>
-        </Box>
-      </CardActions>
-    </CustomCard>
+    <>
+      <CustomCard backgroundColor={backgroundColor[nivel]}>
+        <CardContent>
+          <Typography
+            align="center"
+            component="h3"
+            variant="body2"
+            color="text.secondary"
+            gutterBottom
+          >
+            {city}
+          </Typography>
+          <Typography align="center" variant="h4" component="h4">
+            {airQuality}
+          </Typography>
+          <Typography align="center" color="text.secondary">
+            {nivel}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <Box display="flex" width="100%" justifyContent="end">
+            <Button
+              onClick={() => setOpen(true)}
+              variant="outlined"
+              color="info"
+              size="small"
+            >
+              Saiba mais
+            </Button>
+          </Box>
+        </CardActions>
+      </CustomCard>
+
+      <InformationDialog
+        city={city}
+        airQuality={airQuality}
+        nivel={nivel}
+        open={open}
+        handleClose={() => setOpen(false)}
+        appBarBackground={backgroundColor[nivel]}
+      />
+    </>
   );
 };
 

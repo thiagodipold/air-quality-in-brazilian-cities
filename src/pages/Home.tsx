@@ -1,12 +1,17 @@
-import { Grid, Typography } from "@material-ui/core";
-import axios from "axios";
 import { useEffect, useState } from "react";
+
+import { Box, CircularProgress, Grid, Typography } from "@material-ui/core";
 import CityCard from "../components/CityCard";
+
 import { cities } from "../constants/city";
+
+import axios from "axios";
+
 import { IDataResponse } from "../interfaces/api.interfaces";
+
 import { getApi } from "../services/axios.service";
 
-const Home = () => {
+const Home: React.FC = () => {
   const [cityInfos, setCityInfos] = useState<IDataResponse[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,7 +52,7 @@ const Home = () => {
       </Grid>
 
       <Grid container spacing={2}>
-        {!!cityInfos?.length &&
+        {!loading && !!cityInfos?.length ? (
           cityInfos.map((cityInfo, index) => (
             <Grid key={index} item xs={12} sm={6} md={4}>
               <CityCard
@@ -55,7 +60,12 @@ const Home = () => {
                 airQuality={cityInfo.data.iaqi.pm25.v}
               />
             </Grid>
-          ))}
+          ))
+        ) : (
+          <Box mx="auto" mt="30px">
+            <CircularProgress color="success" />
+          </Box>
+        )}
       </Grid>
     </>
   );

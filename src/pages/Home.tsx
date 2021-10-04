@@ -2,6 +2,7 @@ import { Grid, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CityCard from "../components/CityCard";
+import { cities } from "../constants/city";
 import { IDataResponse } from "../interfaces/api.interfaces";
 import { getApi } from "../services/axios.service";
 
@@ -9,12 +10,17 @@ const Home = () => {
   const [cityInfos, setCityInfos] = useState<IDataResponse[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const citiesMapped = () => {
+    const mapCities: Promise<IDataResponse>[] = [];
+    cities.forEach((city) => {
+      mapCities.push(getApi<IDataResponse>(city));
+    });
+    return mapCities;
+  };
+
   useEffect(() => {
     axios
-      .all([
-        getApi<IDataResponse>("sao-paulo"),
-        getApi<IDataResponse>("santos"),
-      ])
+      .all(citiesMapped())
       .then(
         axios.spread((...responses: IDataResponse[]) => {
           setCityInfos(responses);

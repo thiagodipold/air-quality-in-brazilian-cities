@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Box, CircularProgress, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Skeleton, Typography } from "@material-ui/core";
 import CityCard from "../components/CityCard";
 
 import { cities } from "../constants/city";
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const [cityInfos, setCityInfos] = useState<IDataResponse[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const citiesMapped = () => {
+  const citiesMapped = (): Promise<IDataResponse>[] => {
     const mapCities: Promise<IDataResponse>[] = [];
     cities.forEach((city) => {
       mapCities.push(getApi<IDataResponse>(city));
@@ -62,9 +62,38 @@ const Home: React.FC = () => {
             </Grid>
           ))
         ) : (
-          <Box mx="auto" mt="30px">
-            <CircularProgress color="success" />
-          </Box>
+          <>
+            <Grid item xs={12} sm={6} md={4}>
+              <Box mx="auto" mt="15px">
+                <Skeleton
+                  animation="wave"
+                  variant="rectangular"
+                  width="100%"
+                  height={130}
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Box mx="auto" mt="15px">
+                <Skeleton
+                  animation="wave"
+                  variant="rectangular"
+                  width="100%"
+                  height={130}
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Box mx="auto" mt="15px">
+                <Skeleton
+                  animation="wave"
+                  variant="rectangular"
+                  width="100%"
+                  height={130}
+                />
+              </Box>
+            </Grid>
+          </>
         )}
       </Grid>
     </>

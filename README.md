@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Ar da minha cidade
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O projeto consiste em informar aos usuários o nível da qualidade do ar em determinadas cidades paulistas.
 
-## Available Scripts
+Através da [API -  Air Quality Programmatic](https://aqicn.org/api/), consumimos o nível da qualidade do ar através do medidor mp 2.5, indicando a cidade em questão.
 
-In the project directory, you can run:
+## Dependências do projeto
 
+Para rodarmos o projeto, precisamos ter instalado no computador as seguintes dependências:
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+
+## Tecnologias utilizadas
+- [Node](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Yarn](https://yarnpkg.com/) para gerenciamento de pacotes
+- [Material UI](https://mui.com/) como biblioteca de UI
+- [Axios](https://axios-http.com/) para realizar requisições HTTP
+
+## Como rodar o projeto
+
+### `yarn`
+
+Devemos utilizar esse comando antes de rodar o projeto pela primeira vez, para instalarmos todas as dependências.
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Utilizado para rodar a aplicação no modo de desenvolvimento.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Abra [http://localhost:3000](http://localhost:3000) para visualizar o projeto em seu navegador.
 
-### `yarn test`
+## Deploy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A aplicação está hospedada em produção [neste link](http://air-quality-in-brazilian-cities.vercel.app/), através da plataforma da [Vercel](https://vercel.com/).
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+O deploy é realizado toda vez que a branch principal da aplicação do repositório (master) receber um push novo.

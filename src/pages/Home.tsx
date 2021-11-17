@@ -53,14 +53,17 @@ const Home: React.FC = () => {
 
       <Grid container spacing={2}>
         {!loading && !!cityInfos?.length ? (
-          cityInfos.map((cityInfo, index) => (
-            <Grid key={index} item xs={12} sm={6} md={4}>
-              <CityCard
-                city={cityInfo.data.city.name}
-                airQuality={cityInfo.data.iaqi.pm25.v}
-              />
-            </Grid>
-          ))
+          cityInfos.map(
+            (cityInfo, index) =>
+              cityInfo.data?.iaqi?.pm25?.v && (
+                <Grid key={index} item xs={12} sm={6} md={4}>
+                  <CityCard
+                    city={cityInfo.data.city.name}
+                    airQuality={cityInfo.data.iaqi.pm25.v}
+                  />
+                </Grid>
+              )
+          )
         ) : (
           <>
             <Grid item xs={12} sm={6} md={4}>

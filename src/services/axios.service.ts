@@ -24,6 +24,6 @@ export async function getApi<T>(url: string): Promise<T> {
       }
     }
 
-    throw new Error("Oops! Houve algum problema com sua requisição");
+    throw new Error("Ops! Houve algum problema com sua requisição");
   }
 }

@@ -5,7 +5,7 @@ import {
   CardContent,
   Typography,
 } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import InformationDialog from "../InformationDialog";
 import { CustomCard } from "./style";
 
@@ -25,7 +25,7 @@ const CityCard: React.FC<ICityCard> = ({ airQuality, city }) => {
   const [nivel, setNivel] = useState("");
   const [open, setOpen] = useState(false);
 
-  const nivelByAirQuality = (): string => {
+  const nivelByAirQuality = useCallback(() => {
     switch (!!airQuality) {
       case airQuality <= 40:
         return "Boa";
@@ -40,7 +40,7 @@ const CityCard: React.FC<ICityCard> = ({ airQuality, city }) => {
       default:
         return "";
     }
-  };
+  }, [airQuality])
 
   useEffect(() => {
     setNivel(nivelByAirQuality());

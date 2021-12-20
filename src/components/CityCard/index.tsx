@@ -44,7 +44,7 @@ const CityCard: React.FC<ICityCard> = ({ airQuality, city }) => {
 
   useEffect(() => {
     setNivel(nivelByAirQuality());
-  }, []);
+  }, [nivelByAirQuality]);
 
   return (
     <>
